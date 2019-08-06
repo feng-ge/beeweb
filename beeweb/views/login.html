@@ -1,0 +1,27 @@
+<html>
+   <head>
+      <title>登录</title>
+      <link rel="shortcut icon" href="/static/img/feng_ge.png">
+      <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+   </head>
+<body>
+   <div class="container" style="width:500px">
+      <form method="POST" action="/login">
+         <div class="form-group">
+           <label for="exampleInputEmail1">账号</label>
+           <input class="form-control" placeholder="输入账号" name="username">
+         </div>
+         <div class="form-group">
+           <label for="exampleInputPassword1">密码</label>
+           <input type="password" class="form-control" placeholder="输入密码" name="password">
+         </div>
+         <div class="checkbox">
+           <label>
+             <input type="checkbox" name="autoLogin"> 自动登录
+           </label>
+         </div>
+         <button type="submit" class="btn btn-default">登录</button>
+       </form>
+   </div>
+</body>
+</html>
