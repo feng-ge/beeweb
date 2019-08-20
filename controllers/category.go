@@ -32,6 +32,13 @@ func (this *CategoryController) Get() {
 		if len(id) == 0 {
 			break
 		}
+		err := models.DelCategory(id)
+		if err != nil {
+			beego.Error(err)
+		}
+
+		this.Redirect("/category", 301)
+		return
 	}
 	this.Data["IsCategory"] = true
 	this.Data["IsLogin"] = checkAccount(this.Ctx)
