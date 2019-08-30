@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"os"
 	"path"
 	"strconv"
@@ -48,26 +49,27 @@ func RegisterDB() {
 	}
 
 	orm.RegisterModel(new(Category), new(Topic))
-
+	orm.RegisterDriver(_SQLITE3_DRIVER, orm.DRSqlite)
 	orm.RegisterDataBase("default", _SQLITE3_DRIVER, _DB_NAME, 10)
 }
 
 func AddCategory(name string) error {
 	o := orm.NewOrm()
 
-	cate := &Category{Title: name}
+	cate := Category{Title: name, Created: time.Now(), TopicTime: time.Now()}
 
 	qs := o.QueryTable("category")
-	err := qs.Filter("title", name).One(cate)
-	if err == nil {
+	bExist := qs.Filter("title", name).Exist()
+	if bExist {
+		err := fmt.Errorf("Already Exist!")
 		return err
 	}
 
-	_, err = o.Insert(cate)
-	if err != nil {
+	if _, err := o.Insert(&cate); err != nil {
 		return err
 	}
 	return nil
+	//不能添加阿拉伯数字，很奇怪！莫名其妙！含有阿拉伯数字都不行！
 }
 
 func GetAllCategories() ([]*Category, error) {
