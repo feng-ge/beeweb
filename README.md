@@ -1,17 +1,17 @@
 #beeweb
-______
-| ___ \
-| |_/ /  ___   ___
-| ___ \ / _ \ / _ \
-| |_/ /|  __/|  __/
-\____/  \___| \___| v1.10.0
-
-├── Beego     : 1.12.0
-├── GoVersion : go1.9.4
-├── GOOS      : linux
-├── GOARCH    : amd64
-├── NumCPU    : 8
-├── GOPATH    : 
-├── GOROOT    : /usr/lib/go-1.9
-├── Compiler  : gc
-└── Date      : Friday, 30 Aug 2019
+______<br>
+| ___ \<br>
+| |_/ /  ___   ___<br>
+| ___ \ / _ \ / _ \<br>
+| |_/ /|  __/|  __/<br>
+\____/  \___| \___| v1.10.0<br>
+<br>
+├── Beego     : 1.12.0<br>
+├── GoVersion : go1.9.4<br>
+├── GOOS      : linux<br>
+├── GOARCH    : amd64<br>
+├── NumCPU    : 8<br>
+├── GOPATH    : <br>
+├── GOROOT    : /usr/lib/go-1.9<br>
+├── Compiler  : gc<br>
+└── Date      : Friday, 30 Aug 2019<br>
