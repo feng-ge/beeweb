@@ -1,0 +1,28 @@
+<html>
+
+<head>
+   <title>{{.Topic.Title}}</title>
+   <link rel="shortcut icon" href="/static/img/feng_ge.png">
+   <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+</head>
+<style>
+   body {
+      padding-top: 70px;
+   }
+</style>
+
+<body>
+
+   {{template "navbar" .}}
+
+   <div class="container">
+      <h1>{{.Topic.Title}}</h1>
+      <a href="/topic/modify?tid={{.Tid}}" class="btn btn-default">修改文章</a>
+      <div>{{.Topic.Content}}</div>
+   </div>
+
+   <script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+   <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

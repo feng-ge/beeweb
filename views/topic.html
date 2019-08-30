@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>首页</title>
+    <title>文章</title>
     <link rel="shortcut icon" href="/static/img/feng_ge.png">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
@@ -16,13 +16,31 @@
     {{template "navbar" .}}
 
     <div class="container">
-        <div class="page-header">
-            <h1>我的第一篇文章</h1>
-            <h6 class="text-muted">文章发表于xxxxxxxxx</h6>
-            <p>
-                大家好！！！！
-            </p>
-        </div>
+        <h1>文章列表</h1>
+        <a href="/topic/add" class="btn btn-default">添加文章</a>
+        <table class="table table-stripde">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>文章名称</th>
+                    <th>最后更新</th>
+                    <th>浏览</th>
+                    <th>回复数</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            {{range .Topics}}
+            <tbody>
+                <th>{{.Id}}</th>
+                <th><a href="/topic/view/{{.Id}}">{{.Title}}</a></th>
+                <th>{{.Updated}}</th>
+                <th>{{.Views}}</th>
+                <th>{{.ReplyCount}}</th>
+                <th><a href="/topic/delete?tid={{.Id}}">删除</a></th>
+            </tbody>
+            {{end}}
+        </table>
+    </div>
     </div>
 
     <script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
