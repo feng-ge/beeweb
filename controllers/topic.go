@@ -43,6 +43,7 @@ func (this *TopicController) Post() {
 }
 
 func (this *TopicController) Add() {
+	this.Data["IsLogin"] = checkAccount(this.Ctx)
 	this.TplName = "topic_add.html"
 }
 
@@ -56,6 +57,7 @@ func (this *TopicController) View() {
 	}
 	this.Data["Topic"] = topic
 	this.Data["Tid"] = this.Ctx.Input.Param("0")
+	this.Data["IsLogin"] = checkAccount(this.Ctx)
 }
 
 func (this *TopicController) Modify() {
@@ -70,6 +72,7 @@ func (this *TopicController) Modify() {
 	}
 	this.Data["Topic"] = topic
 	this.Data["Tid"] = tid
+	this.Data["IsLogin"] = checkAccount(this.Ctx)
 }
 
 func (this *TopicController) Delete() {
