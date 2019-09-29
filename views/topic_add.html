@@ -23,6 +23,14 @@
             <input type="text" name="title" class="form-control">
          </div>
          <div class="form-group">
+            <label>选择分类：</label>
+            <select name ="category">
+               {{range .Categories}}
+               <option value ="{{.Title}}" >{{.Title}}</option>
+               {{end}}
+            </select>
+         </div>
+         <div class="form-group">
             <label>文章内容：</label>
             <textarea class="form-control" name="content" cols="30" rows="15"></textarea>
          </div>

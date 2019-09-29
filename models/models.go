@@ -40,6 +40,7 @@ type Topic struct {
 	ReplyTime       time.Time `orm:"index"`
 	ReplyCount      int64
 	ReplyLastUserId int64
+	Category        string
 }
 
 func RegisterDB() {
@@ -69,7 +70,6 @@ func AddCategory(name string) error {
 		return err
 	}
 	return nil
-	//不能添加阿拉伯数字，很奇怪！莫名其妙！含有阿拉伯数字都不行！
 }
 
 func GetAllCategories() ([]*Category, error) {
@@ -93,11 +93,12 @@ func DelCategory(id string) error {
 	return err
 }
 
-func AddTopic(title, content string) error {
+func AddTopic(title, category, content string) error {
 	o := orm.NewOrm()
 	topic := &Topic{
 		Title:     title,
 		Content:   content,
+		Category:  category,
 		Created:   time.Now(),
 		Updated:   time.Now(),
 		ReplyTime: time.Now(),
@@ -137,7 +138,7 @@ func GetTopic(tid string) (*Topic, error) {
 	return topic, err
 }
 
-func ModifyTopic(tid, title, content string) error {
+func ModifyTopic(tid, title, category, content string) error {
 	tidNum, err := strconv.ParseInt(tid, 10, 64)
 	if err != nil {
 		return err
@@ -147,6 +148,7 @@ func ModifyTopic(tid, title, content string) error {
 	if o.Read(topic) == nil {
 		topic.Title = title
 		topic.Content = content
+		topic.Category = category
 		topic.Updated = time.Now()
 		o.Update(topic)
 	}
